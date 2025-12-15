@@ -22,7 +22,8 @@ public class SecurityConfig { // 스프링에서 보안 관리 클래스
                             // X-XSS-Protection 헤더 설정: XSS 공격 방어 활성화 및 브라우저가 페이지 렌더링을 차단하도록 설정
                             response.setHeader("X-XSS-Protection", "1; mode=block");
                         }))
-                .csrf(withDefaults()) // CSRF 보호 활성화 (기본 설정 사용)
+                // .csrf(withDefaults()) // CSRF 보호 활성화 (기본 설정 사용)
+                .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session
                         // 세션 만료 시 이동할 페이지 URL 설정
                         .invalidSessionUrl("/session-expired")
